@@ -14,5 +14,5 @@ class AppUtils{
     const USER_CBQL = 1;
     const USER_CVHT = 2;
     const USER_CBL = 3;
-    const USER_NOMAL = 4;
+    const USER_NORMAL = 4;
 }
