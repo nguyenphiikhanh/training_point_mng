@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('username')->unique();
-            $table->tinyInteger('role')->default(AppUtils::USER_NOMAL);
+            $table->tinyInteger('role')->default(AppUtils::USER_NORMAL);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
