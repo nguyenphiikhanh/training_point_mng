@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [LoginController::class,'index'])->name('home.index');
+Route::post('/', [LoginController::class,'login'])->name('home.login');
+
+
+Route::get('/dang-nhap', function () {
+    return redirect()->route('home.index');
 });
