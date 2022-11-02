@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LoginController::class,'index'])->name('home.index');
-Route::post('/', [LoginController::class,'login'])->name('home.login');
+Route::get('/dang-nhap', [LoginController::class,'index'])->name('login.index');
+Route::post('/dang-nhap', [LoginController::class,'login'])->name('login.login_post');
+Route::get('logout', [LoginController::class,'logout'])->name('logout');
 
-
-Route::get('/dang-nhap', function () {
-    return redirect()->route('home.index');
+Route::middleware('user.authenticated')->prefix('')->name('page.')->group(function () {
+    Route::get('/',[DashBoardController::class,'index'])->name('index');
 });
