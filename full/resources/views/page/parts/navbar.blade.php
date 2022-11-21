@@ -6,8 +6,8 @@
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                 <defs>
-                                    <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%"
-                                        x2="50%" y2="89.4879456%">
+                                    <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%"
+                                        y2="89.4879456%">
                                         <stop stop-color="#000000" offset="0%"></stop>
                                         <stop stop-color="#FFFFFF" offset="100%"></stop>
                                     </lineargradient>
@@ -17,8 +17,7 @@
                                         <stop stop-color="#FFFFFF" offset="100%"></stop>
                                     </lineargradient>
                                 </defs>
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none"
-                                    fill-rule="evenodd">
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <g id="Artboard" transform="translate(-400.000000, -178.000000)">
                                         <g id="Group" transform="translate(400.000000, 178.000000)">
                                             <path class="text-primary" id="Path"
@@ -33,8 +32,7 @@
                                             <polygon id="Path-21" fill="#000000" opacity="0.099999994"
                                                 points="69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338">
                                             </polygon>
-                                            <polygon id="Path-3" fill="url(#linearGradient-2)"
-                                                opacity="0.099999994"
+                                            <polygon id="Path-3" fill="url(#linearGradient-2)" opacity="0.099999994"
                                                 points="101.428699 0 83.0667527 94.1480575 130.378721 47.0740288">
                                             </polygon>
                                         </g>
@@ -43,9 +41,8 @@
                             </svg></span>
                         <h2 class="brand-text">Vuexy</h2>
                     </a></li>
-                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0"
-                        data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4"
-                            data-feather="x"></i><i
+                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i
+                            class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i
                             class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary"
                             data-feather="disc" data-ticon="disc"></i></a></li>
             </ul>
@@ -53,19 +50,11 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><i
-                            data-feather="mail"></i><span class="menu-title text-truncate"
-                            data-i18n="Email">Quản lý khoa</span></a>
+                <li class="nav-item"><a class="d-flex align-items-center" href="{{route('page.index')}}"><i
+                            data-feather="home"></i><span class="menu-title text-truncate">Trang chủ</span></a>
                 </li>
-
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><i
-                    data-feather="mail"></i><span class="menu-title text-truncate"
-                    data-i18n="Email">Quản lý sinh viên</span></a>
-                </li>
-
-                <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><i
-                    data-feather="mail"></i><span class="menu-title text-truncate"
-                    data-i18n="Email">Quản lý đợt xét duyệt</span></a>
+                <li class="nav-item"><a class="d-flex align-items-center" href="app-email.html"><i
+                    data-feather="star"></i><span class="menu-title text-truncate">Quản lí Khoa</span></a>
                 </li>
             </ul>
         </div>
