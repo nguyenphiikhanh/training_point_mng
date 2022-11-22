@@ -37,7 +37,7 @@ class FacultController extends Controller
                 'ten_khoa' => $faculty_name,
             ]);
 
-            return back()->with('success',__('custom_message.faculty.create.success'));
+            return back()->with('success',__('custom_message.create.success',['attribute' => 'Khoa/Ngành học']));
         }
         catch(\Exception $e){
             Log::error($e->getMessage() . $e->getTraceAsString());
@@ -63,9 +63,24 @@ class FacultController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FacultyRequest $request, $id)
     {
         //
+        try{
+            $faculty = Khoa::find($id);
+            if(!$faculty){
+                return back()->with('error',__('custom_message.update.not_exist',['attribute' => 'Khoa/Ngành học']));
+            } else {
+                $faculty->update([
+                    'ten_khoa' => $request->faculty_name,
+                ]);
+                return back()->with('success',__('custom_message.update.success',['attribute' => 'Khoa/Ngành học']));
+            }
+        }
+        catch(\Exception $e){
+            Log::error($e->getMessage() . $e->getTraceAsString());
+            return back()->with('error',__('custom_message.failed'));
+        }
     }
 
     /**

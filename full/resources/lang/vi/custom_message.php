@@ -14,10 +14,13 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'faculty' => [
-        'create' => [
-            'success' => 'Thêm Khoa/Ngành học mới thành công!',
-        ]
+
+    'create' => [
+        'success' => 'Thêm :attribute mới thành công!',
+    ],
+    'update' => [
+        'success' => 'Cập nhật :attribute thành công!',
+        'not_exist' => ':attribute không tồn tại!'
     ],
 
     'failed' => 'Có lỗi xảy ra, vui lòng thử lại!'
