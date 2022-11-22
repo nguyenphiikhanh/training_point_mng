@@ -1,7 +1,7 @@
 @extends('page.layouts.layout')
 
 @section('title')
-<title>Trang chủ - hệ thống Quản lí điểm rèn luyện</title>
+<title>Trang chủ - Hệ thống Quản lí điểm rèn luyện</title>
 @endsection
 
 @section('css')
