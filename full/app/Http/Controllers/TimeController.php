@@ -14,6 +14,7 @@ class TimeController extends Controller
     public function index()
     {
         //
+        return view('page.admin.times.list');
     }
 
     /**
