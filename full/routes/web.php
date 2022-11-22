@@ -23,8 +23,10 @@ Route::get('logout', [LoginController::class,'logout'])->name('logout');
 Route::middleware('user.authenticated')->prefix('')->name('page.')->group(function () {
     Route::get('/',[DashBoardController::class,'index'])->name('index');
 
-    //quản lí khoa. Role: ADMIN
+    //BEGIN: quản lí khoa. Role: ADMIN
     Route::get('/quan-li-khoa',[FacultController::class,'index'])->name('faculty.list');
     Route::post('/quan-li-khoa',[FacultController::class,'store'])->name('faculty.store');
+    Route::post('/quan-li-khoa/{id}/update',[FacultController::class,'update'])->name('faculty.update');
+    //END: quản lí khoa.
 
 });

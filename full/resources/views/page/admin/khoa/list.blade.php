@@ -59,7 +59,7 @@
                                                             </button>
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal" data-bs-target="#faculty-add">
+                                                                    data-bs-toggle="modal" data-bs-target="#faculty-showUp{{$index}}">
                                                                     <i data-feather="edit-2" class="me-50"></i>
                                                                     <span>Sửa</span>
                                                                 </a>
@@ -87,7 +87,40 @@
         </div>
     </div>
 
-    {{--  --}}
+    {{-- BEGIN:showUP --}}
+        @foreach ($faculties as $index => $faculty)
+        <div class="modal fade" id="faculty-showUp{{$index}}" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Chỉnh sửa Khoa/Ngành học</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form form-vertical" action="{{ route('page.faculty.update',['id' => $faculty->id]) }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-1">
+                                        <label class="form-label">Tên khoa/Ngành học</label>
+                                        <input type="text" class="form-control" name="faculty_name" required value="{{$faculty->ten_khoa}}"
+                                            placeholder="Nhập tên khoa/Ngành học" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                <button type="reset" class="btn btn-secondary">Reset </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    {{-- END: showUP --}}
+
+    {{-- BEGIN: create --}}
     <div class="modal fade" id="faculty-add" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -116,7 +149,7 @@
             </div>
         </div>
     </div>
-    {{--  --}}
+    {{-- END: create --}}
     <!-- END: Content-->
 @endsection
 
