@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\FacultController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TimeController;
