@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 
 class FacultyRequest extends FormRequest
 {
@@ -23,10 +25,19 @@ class FacultyRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-            'faculty_name' => 'unique:khoas,ten_khoa'
-        ];
+        $method = $this->route()->getActionMethod();
+        Log::debug($method);
+        if($method == 'store'){
+            return [
+                'faculty_name' => 'unique:khoas,ten_khoa'
+            ];
+        }
+
+        if($method == 'update'){
+            return [
+                'faculty_name' => 'unique:khoas,ten_khoa,'.$this->id.',id'
+            ];
+        }
     }
 
     public function messages()
