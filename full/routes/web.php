@@ -40,6 +40,10 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
     Route::get('/quan-li-khoa/{id}/delete',[FacultController::class,'destroy'])->name('faculty.destroy');
     //END: quản lí khoa.
 
+    //BEGIN: quản lí lớp. ROLE: Cán bộ khoa
+    Route::get('/quan-li-lop',[ClassController::class,'index'])->name('class.list');
+    //END: quản lí khoa.
+
     /**
      * BEGIN: quản lí đợt duyệt.
      *  Role: ADMIN
