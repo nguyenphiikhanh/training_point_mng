@@ -59,11 +59,13 @@
                                                             </button>
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <a class="dropdown-item" href="#"
-                                                                    data-bs-toggle="modal" data-bs-target="#faculty-showUp{{$index}}">
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#faculty-showUp{{ $index }}">
                                                                     <i data-feather="edit-2" class="me-50"></i>
                                                                     <span>Sửa</span>
                                                                 </a>
-                                                                <a class="dropdown-item" href="#">
+                                                                <a class="dropdown-item" href="#"
+                                                                    onclick="delete_faculty(`{{ route('page.faculty.destroy', ['id' => $faculty->id]) }}`)">
                                                                     <i data-feather="trash" class="me-50"></i>
                                                                     <span>Xoá</span>
                                                                 </a>
@@ -88,8 +90,9 @@
     </div>
 
     {{-- BEGIN:showUP --}}
-        @foreach ($faculties as $index => $faculty)
-        <div class="modal fade" id="faculty-showUp{{$index}}" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    @foreach ($faculties as $index => $faculty)
+        <div class="modal fade" id="faculty-showUp{{ $index }}" tabindex="-1"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -97,14 +100,15 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="form form-vertical" action="{{ route('page.faculty.update',['id' => $faculty->id]) }}" method="POST">
+                        <form class="form form-vertical" action="{{ route('page.faculty.update', ['id' => $faculty->id]) }}"
+                            method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-1">
                                         <label class="form-label">Tên khoa/Ngành học</label>
-                                        <input type="text" class="form-control" name="faculty_name" required value="{{$faculty->ten_khoa}}"
-                                            placeholder="Nhập tên khoa/Ngành học" />
+                                        <input type="text" class="form-control" name="faculty_name" required
+                                            value="{{ $faculty->ten_khoa }}" placeholder="Nhập tên khoa/Ngành học" />
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +121,7 @@
                 </div>
             </div>
         </div>
-        @endforeach
+    @endforeach
     {{-- END: showUP --}}
 
     {{-- BEGIN: create --}}
@@ -155,6 +159,23 @@
 
 @section('js')
     <script>
+        function delete_faculty(delete_domain) {
+            console.log(delete_domain);
+            Swal.fire({
+                title: 'Chú ý, bạn không thể hoàn tác hành động này!',
+                text: "Xoá Khoa/Ngành học sẽ xoá toàn bộ dữ liệu liên quan. Bạn có chắc chắn xoá không?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'Có, Xoá!',
+                cancelButtonText: 'Huỷ'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = delete_domain;
+                }
+            })
+        }
+
         @if (\Session::has('success'))
             Swal.fire({
                 title: 'Thông báo!',
