@@ -4,6 +4,7 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\FacultController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TimeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,8 +32,12 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
     Route::get('/quan-li-khoa/{id}/delete',[FacultController::class,'destroy'])->name('faculty.destroy');
     //END: quản lí khoa.
 
+    //BEGIN: quản lí đợt duyệt. Role: ADMIN
+    Route::get('/quan-li-dot-xet-duyet',[TimeController::class,'index'])->name('time.list');
+    //END: quản lí đợt duyệt.
+
     //BEGIN: quản lí lớp. ROLE: Cán bộ khoa
     Route::get('/quan-li-lop',[ClassController::class,'index'])->name('class.list');
-    //END: quản lí khoa.
+    //END: quản lí đượt duyệt.
 
 });

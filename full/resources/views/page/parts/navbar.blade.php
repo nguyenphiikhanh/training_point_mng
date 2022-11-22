@@ -1,3 +1,6 @@
+    @php
+        $user = Auth::user();
+    @endphp
     <!-- BEGIN: Main Menu-->
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
@@ -53,12 +56,23 @@
                 <li class="nav-item {{ request()->routeIs('page.index') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{route('page.index')}}"><i
                             data-feather="home"></i><span class="menu-title text-truncate">Trang chủ</span></a>
                 </li>
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ROOT)
                 <li class="nav-item {{ request()->routeIs('page.faculty*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.faculty.list')}}"><i
-                    data-feather="star"></i><span class="menu-title text-truncate">Quản lí Khoa</span></a>
+                                data-feather="star"></i><span class="menu-title text-truncate">Quản lí Khoa</span></a>
                 </li>
+                @endif
+
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_CBQL)
                 <li class="nav-item {{ request()->routeIs('page.class*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.class.list')}}"><i
                     data-feather="star"></i><span class="menu-title text-truncate">Quản lí Lớp</span></a>
                 </li>
+                @endif
+
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ROOT)
+                <li class="nav-item {{ request()->routeIs('page.time*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.time.list')}}"><i
+                    data-feather="star"></i><span class="menu-title text-truncate">Quản lí Xét duyệt</span></a>
+                </li>
+                @endif
             </ul>
         </div>
     </div>
