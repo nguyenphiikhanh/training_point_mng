@@ -8,7 +8,7 @@
 
 namespace App\Http\Utils;
 
-class RoleUltils{
+class RoleUtils{
     // user permissions
     const ROLE_ROOT = 0;
     const ROLE_CBQL = 1;

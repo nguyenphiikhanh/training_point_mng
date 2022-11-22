@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Http\Utils\RoleUltils;
+use App\Http\Utils\RoleUtils;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'last_name' => '_root',
                 'username' => 'root',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'role' => RoleUltils::ROLE_ROOT,
+                'role' => RoleUtils::ROLE_ROOT,
                 'semester' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Ha',
                 'username' => 'cbql_ptha',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'role' => RoleUltils::ROLE_CBQL,
+                'role' => RoleUtils::ROLE_CBQL,
                 'semester' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Anh Le',
                 'username' => 'cvht_ptale',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'role' => RoleUltils::ROLE_CVHT,
+                'role' => RoleUtils::ROLE_CVHT,
                 'semester' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -65,7 +65,7 @@ class UserSeeder extends Seeder
                 'username' => '695105060',
                 'semester' => '69',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'role' => RoleUltils::ROLE_CVHT,
+                'role' => RoleUtils::ROLE_CVHT,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];
@@ -80,7 +80,7 @@ class UserSeeder extends Seeder
                     'username' => $username,
                     'semester' => '69',
                     'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                    'role' => RoleUltils::ROLE_STUDENT,
+                    'role' => RoleUtils::ROLE_STUDENT,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ];
