@@ -28,6 +28,10 @@
 <script src="{{ asset('app-assets/js/scripts/customizer.min.js') }}"></script>
 <!-- END: Theme JS-->
 
+{{-- BEGIN: sweetAlert2 --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- END: sweetAlert2 --}}
+
 {{-- add js --}}
 @yield('js')
 

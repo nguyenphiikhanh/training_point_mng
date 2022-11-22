@@ -71,7 +71,7 @@
                                 height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-                        <a class="dropdown-item" href="page-profile.html"><i class="me-50" data-feather="key"></i>
+                        <a class="dropdown-item" href="#"><i class="me-50" data-feather="key"></i>
                              Đổi mật khẩu</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"><i class="me-50"

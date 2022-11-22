@@ -50,10 +50,10 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="nav-item active"><a class="d-flex align-items-center" href="{{route('page.index')}}"><i
+                <li class="nav-item {{ request()->routeIs('page.index') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{route('page.index')}}"><i
                             data-feather="home"></i><span class="menu-title text-truncate">Trang chủ</span></a>
                 </li>
-                <li class="nav-item"><a class="d-flex align-items-center" href="app-email.html"><i
+                <li class="nav-item {{ request()->routeIs('page.faculty*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.faculty.list')}}"><i
                     data-feather="star"></i><span class="menu-title text-truncate">Quản lí Khoa</span></a>
                 </li>
             </ul>

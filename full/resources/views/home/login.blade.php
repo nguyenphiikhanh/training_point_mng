@@ -10,7 +10,7 @@
     <meta name="keywords"
         content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Login Page - Vuexy - Bootstrap HTML admin template</title>
+    <title>Đăng nhập - Hệ thống Quản lí điểm rèn luyện</title>
     <link rel="shortcut icon" type="image/x-icon"
         href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
@@ -106,7 +106,7 @@
                                     {!! \Session::get('error') !!}
                                 </div>
                             @endif
-                                <h4 class="card-title mb-1">Chào mừng trở lại</h4>
+                                <h4 class="card-title mb-1">Hệ thống quản lí điểm rèn luyện</h4>
                                 <p class="card-text mb-2">Đăng nhập để tiếp tục</p>
 
                                 <form class="auth-login-form mt-2" action="{{ route('login.login_post') }}"
@@ -120,12 +120,12 @@
                                     </div>
 
                                     <div class="mb-1">
-                                        <div class="d-flex justify-content-between">
+                                        {{-- <div class="d-flex justify-content-between">
                                             <label class="form-label" for="login-password">Mật khẩu</label>
                                             <a href="auth-forgot-password-basic.html">
                                                 <small>Quên mật khẩu?</small>
                                             </a>
-                                        </div>
+                                        </div> --}}
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input type="password" class="form-control form-control-merge"
                                                 id="login-password" name="password" tabindex="2"
