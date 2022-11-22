@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Utils\AppUtils;
+use App\Http\Utils\RoleUltils;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('username')->unique();
-            $table->tinyInteger('role')->default(AppUtils::USER_NORMAL);
+            $table->tinyInteger('role')->default(RoleUltils::ROLE_STUDENT);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
