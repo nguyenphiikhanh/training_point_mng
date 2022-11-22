@@ -56,6 +56,9 @@
                 <li class="nav-item {{ request()->routeIs('page.faculty*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.faculty.list')}}"><i
                     data-feather="star"></i><span class="menu-title text-truncate">Quản lí Khoa</span></a>
                 </li>
+                <li class="nav-item {{ request()->routeIs('page.class*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.class.list')}}"><i
+                    data-feather="star"></i><span class="menu-title text-truncate">Quản lí Lớp</span></a>
+                </li>
             </ul>
         </div>
     </div>
