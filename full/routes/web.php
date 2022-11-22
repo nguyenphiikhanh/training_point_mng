@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\FacultController;
 use App\Http\Controllers\LoginController;
@@ -28,6 +29,10 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
     Route::post('/quan-li-khoa',[FacultController::class,'store'])->name('faculty.store');
     Route::post('/quan-li-khoa/{id}/update',[FacultController::class,'update'])->name('faculty.update');
     Route::get('/quan-li-khoa/{id}/delete',[FacultController::class,'destroy'])->name('faculty.destroy');
+    //END: quản lí khoa.
+
+    //BEGIN: quản lí lớp. ROLE: Cán bộ khoa
+    Route::get('/quan-li-lop',[ClassController::class,'index'])->name('class.list');
     //END: quản lí khoa.
 
 });
