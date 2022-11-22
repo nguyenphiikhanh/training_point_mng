@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\FacultController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,9 @@ Route::get('logout', [LoginController::class,'logout'])->name('logout');
 
 Route::middleware('user.authenticated')->prefix('')->name('page.')->group(function () {
     Route::get('/',[DashBoardController::class,'index'])->name('index');
+
+    //quản lí khoa. Role: ADMIN
+    Route::get('/quan-li-khoa',[FacultController::class,'index'])->name('faculty.list');
+    Route::post('/quan-li-khoa',[FacultController::class,'store'])->name('faculty.store');
+
 });
