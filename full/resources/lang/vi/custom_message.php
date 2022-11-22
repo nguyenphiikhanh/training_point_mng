@@ -20,9 +20,12 @@ return [
     ],
     'update' => [
         'success' => 'Cập nhật :attribute thành công!',
-        'not_exist' => ':attribute không tồn tại!'
+    ],
+    'delete' => [
+        'success' => 'Xoá :attribute thành công!',
     ],
 
+    'not_exist' => ':attribute không tồn tại!',
     'failed' => 'Có lỗi xảy ra, vui lòng thử lại!'
 
 ];

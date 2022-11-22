@@ -69,7 +69,7 @@ class FacultController extends Controller
         try{
             $faculty = Khoa::find($id);
             if(!$faculty){
-                return back()->with('error',__('custom_message.update.not_exist',['attribute' => 'Khoa/Ngành học']));
+                return back()->with('error',__('custom_message.not_exist',['attribute' => 'Khoa/Ngành học']));
             } else {
                 $faculty->update([
                     'ten_khoa' => $request->faculty_name,
@@ -92,5 +92,18 @@ class FacultController extends Controller
     public function destroy($id)
     {
         //
+        try{
+            $faculty = Khoa::find($id);
+            if(!$faculty){
+                return back()->with('error',__('custom_message.not_exist',['attribute' => 'Khoa/Ngành học']));
+            } else {
+                $faculty->delete();
+                return back()->with('success',__('custom_message.delete.success',['attribute' => 'Khoa/Ngành học']));
+            }
+        }
+        catch(\Exception $e){
+            Log::error($e->getMessage() . $e->getTraceAsString());
+            return back()->with('error',__('custom_message.failed'));
+        }
     }
 }
