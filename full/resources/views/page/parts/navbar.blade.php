@@ -73,6 +73,11 @@
                     data-feather="star"></i><span class="menu-title text-truncate">Quản lí Xét duyệt</span></a>
                 </li>
                 @endif
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ROOT)
+                <li class="nav-item {{ request()->routeIs('page.user*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.user.users')}}"><i
+                    data-feather="star"></i><span class="menu-title text-truncate">Quản lí người dùng</span></a>
+                </li>
+                @endif
             </ul>
         </div>
     </div>
