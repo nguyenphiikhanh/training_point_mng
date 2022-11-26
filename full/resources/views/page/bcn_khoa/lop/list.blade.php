@@ -56,29 +56,9 @@
                                 <i data-feather="edit-2" class="me-50"></i>
                                 <span>Edit</span>
                               </a>
-                              <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
-                                <i data-feather="trash" class="me-50"></i>
-                                <span>Delete</span>
-                              </a>
-                            </div>
-                          </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1</td>
-                        <td class="text-nowrap">69B</td>
-                        <td class="text-nowrap">Nguyên Thị A</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                              data-bs-toggle="dropdown">
-                              <i data-feather="more-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalCenter">
-                                <i data-feather="edit-2" class="me-50"></i>
-                                <span>Edit</span>
+                              <a class="dropdown-item" href="{{ route('page.user.student')}}">
+                                <i data-feather="user" class="me-50"></i>
+                                <span>Sinh viên</span>
                               </a>
                               <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
                                 <i data-feather="trash" class="me-50"></i>
@@ -104,29 +84,9 @@
                                 <i data-feather="edit-2" class="me-50"></i>
                                 <span>Edit</span>
                               </a>
-                              <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
-                                <i data-feather="trash" class="me-50"></i>
-                                <span>Delete</span>
-                              </a>
-                            </div>
-                          </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1</td>
-                        <td class="text-nowrap">69B</td>
-                        <td class="text-nowrap">Nguyên Thị A</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                              data-bs-toggle="dropdown">
-                              <i data-feather="more-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalCenter">
-                                <i data-feather="edit-2" class="me-50"></i>
-                                <span>Edit</span>
+                              <a class="dropdown-item" href="{{ route('page.user.student')}}">
+                                <i data-feather="user" class="me-50"></i>
+                                <span>Sinh viên</span>
                               </a>
                               <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
                                 <i data-feather="trash" class="me-50"></i>
@@ -151,6 +111,66 @@
                                 data-bs-target="#exampleModalCenter">
                                 <i data-feather="edit-2" class="me-50"></i>
                                 <span>Edit</span>
+                              </a>
+                              <a class="dropdown-item" href="{{ route('page.user.student')}}">
+                                <i data-feather="user" class="me-50"></i>
+                                <span>Sinh viên</span>
+                              </a>
+                              <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
+                                <i data-feather="trash" class="me-50"></i>
+                                <span>Delete</span>
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">1</td>
+                        <td class="text-nowrap">69B</td>
+                        <td class="text-nowrap">Nguyên Thị A</td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
+                              data-bs-toggle="dropdown">
+                              <i data-feather="more-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                              <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                data-bs-target="#exampleModalCenter">
+                                <i data-feather="edit-2" class="me-50"></i>
+                                <span>Edit</span>
+                              </a>
+                              <a class="dropdown-item" href="{{ route('page.user.student')}}">
+                                <i data-feather="user" class="me-50"></i>
+                                <span>Sinh viên</span>
+                              </a>
+                              <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
+                                <i data-feather="trash" class="me-50"></i>
+                                <span>Delete</span>
+                              </a>
+                            </div>
+                          </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">1</td>
+                        <td class="text-nowrap">69B</td>
+                        <td class="text-nowrap">Nguyên Thị A</td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
+                              data-bs-toggle="dropdown">
+                              <i data-feather="more-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                              <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                data-bs-target="#exampleModalCenter">
+                                <i data-feather="edit-2" class="me-50"></i>
+                                <span>Edit</span>
+                              </a>
+                              <a class="dropdown-item" href="{{ route('page.user.student')}}">
+                                <i data-feather="user" class="me-50"></i>
+                                <span>Sinh viên</span>
                               </a>
                               <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
                                 <i data-feather="trash" class="me-50"></i>
