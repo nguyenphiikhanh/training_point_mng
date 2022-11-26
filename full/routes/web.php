@@ -4,6 +4,7 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\FacultController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TimeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,7 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
 
     //BEGIN: quản lí lớp. ROLE: Cán bộ khoa
     Route::get('/quan-li-lop',[ClassController::class,'index'])->name('class.list');
+    Route::get('/quan-li-lop/quan-li-sinh-vien',[StudentController::class,'index'])->name('user.student');
     //END: quản lí đượt duyệt.
 
 });
