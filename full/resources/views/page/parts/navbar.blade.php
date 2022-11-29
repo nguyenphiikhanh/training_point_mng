@@ -56,24 +56,24 @@
                 <li class="nav-item {{ request()->routeIs('page.index') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{route('page.index')}}"><i
                             data-feather="home"></i><span class="menu-title text-truncate">Trang chủ</span></a>
                 </li>
-                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ROOT)
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
                 <li class="nav-item {{ request()->routeIs('page.faculty*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.faculty.list')}}"><i
                                 data-feather="star"></i><span class="menu-title text-truncate">Quản lí Khoa</span></a>
                 </li>
                 @endif
 
-                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_CBQL)
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_BCN_KHOA OR $user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
                 <li class="nav-item {{ request()->routeIs('page.class*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.class.list')}}"><i
                     data-feather="star"></i><span class="menu-title text-truncate">Quản lí Lớp</span></a>
                 </li>
                 @endif
 
-                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ROOT)
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
                 <li class="nav-item {{ request()->routeIs('page.time*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.time.list')}}"><i
                     data-feather="star"></i><span class="menu-title text-truncate">Quản lí Xét duyệt</span></a>
                 </li>
                 @endif
-                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ROOT)
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
                 <li class="nav-item {{ request()->routeIs('page.user*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.user.users')}}"><i
                     data-feather="star"></i><span class="menu-title text-truncate">Quản lí người dùng</span></a>
                 </li>

@@ -62,16 +62,16 @@
                         aria-expanded="false">
                         @php
                             $user = Auth::user();
-                            // $role_name =
+                             $role_name = \App\Http\Utils\RoleUtils::getRoleName($user->role);
                         @endphp
                         <div class="user-nav d-sm-flex d-none"><span
                                 class="user-name fw-bolder">{{ $user->last_name }}</span><span
-                                class="user-status">Admin</span></div><span class="avatar"><img class="round"
+                                class="user-status">{{$role_name}}</span></div><span class="avatar"><img class="round"
                                 src="{{ asset('app-assets/images/avatars/423426-200.png') }}" alt="avatar"
                                 height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-                        <a class="dropdown-item" href="#"><i class="me-50" data-feather="key"></i>
+                        <a class="dropdown-item" href="{{ route('page.password.change.view') }}"><i class="me-50" data-feather="key"></i>
                              Đổi mật khẩu</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"><i class="me-50"

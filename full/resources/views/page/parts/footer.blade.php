@@ -1,14 +1,8 @@
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 
-<!-- BEGIN: Footer-->
-<footer class="footer position-fixed footer-light">
-    <p class=" mb-0">
-                <span class="float-md-end d-none d-md-block">Dev _Khanhnp<i
-                data-feather="heart"></i></span></p>
-</footer>
 <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
-<!-- END: Footer-->
+
 
 
 <!-- BEGIN: Vendor JS-->
