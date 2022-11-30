@@ -160,7 +160,6 @@
 @section('js')
     <script>
         function delete_faculty(delete_domain) {
-            console.log(delete_domain);
             Swal.fire({
                 title: 'Chú ý, bạn không thể hoàn tác hành động này!',
                 text: "Xoá Khoa/Ngành học sẽ xoá toàn bộ dữ liệu liên quan. Bạn có chắc chắn xoá không?",

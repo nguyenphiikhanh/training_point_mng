@@ -16,4 +16,12 @@ return [
     'attempt' => 'Sai tên đăng nhập hoặc mật khẩu.',
     'failed' => 'Có lỗi xảy ra. Vui lòng thử lại.',
 
+    'password' => [
+        'old' => [
+            'not_match' => 'Mật khẩu cũ không chính xác!',
+        ],
+        'change' => [
+            'success' => 'Đổi mật khẩu thành công!',
+        ],
+    ],
 ];

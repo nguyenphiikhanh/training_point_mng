@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'last_name' => '_root',
                 'username' => 'root',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'role' => RoleUtils::ROLE_ROOT,
+                'role' => RoleUtils::ROLE_ADMIN,
                 'semester' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Ha',
                 'username' => 'cbql_ptha',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'role' => RoleUtils::ROLE_CBQL,
+                'role' => RoleUtils::ROLE_QLSV,
                 'semester' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
