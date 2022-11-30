@@ -126,6 +126,7 @@
                                                 <small>Quên mật khẩu?</small>
                                             </a>
                                         </div> --}}
+                                        <label for="login-password" class="form-label">Mật khẩu</label>
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input type="password" class="form-control form-control-merge"
                                                 id="login-password" name="password" tabindex="2"
