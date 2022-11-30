@@ -34,7 +34,7 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
     Route::get('/quan-li-khoa',[FacultController::class,'index'])->name('faculty.list');
     Route::post('/quan-li-khoa',[FacultController::class,'store'])->name('faculty.store');
     Route::post('/quan-li-khoa/{id}/update',[FacultController::class,'update'])->name('faculty.update');
-    Route::put('/quan-li-khoa/{id}/delete',[FacultController::class,'destroy'])->name('faculty.destroy');
+    Route::get('/quan-li-khoa/{id}/delete',[FacultController::class,'destroy'])->name('faculty.destroy');
     //END: quản lí khoa.
 
     //BEGIN: quản lí đợt duyệt. Role: ADMIN
