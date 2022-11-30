@@ -4,17 +4,35 @@ function changePassword(event){
     if(oldPass && newPass){
         if(oldPass.length < 6){
             event.preventDefault();
-            alert('Mật khẩu không được ít hơn 6 kí tự.');
+            Swal.fire({
+                title: 'Lỗi!',
+                text: 'Mật khẩu không được ít hơn 6 kí tự.',
+                icon: 'error',
+                confirmButtonColor: '#48CF85',
+                confirmButtonText: 'Đóng',
+            })
         }
 
         else if(oldPass.length > 40){
             event.preventDefault();
-            alert('Mật khẩu không được nhiều hơn 40 kí tự.');
+            Swal.fire({
+                title: 'Lỗi!',
+                text: 'Mật khẩu không được nhiều hơn 40 kí tự.',
+                icon: 'error',
+                confirmButtonColor: '#48CF85',
+                confirmButtonText: 'Đóng',
+            })
         }
 
         else if(oldPass != newPass){
             event.preventDefault();
-            alert('Vui lòng đảm bảo bạn đã nhập cùng một mật khẩu.');
+            Swal.fire({
+                title: 'Lỗi!',
+                text: 'Vui lòng đảm bảo bạn đã nhập cùng một mật khẩu.',
+                icon: 'error',
+                confirmButtonColor: '#48CF85',
+                confirmButtonText: 'Đóng',
+            })
         }
     }
 }
