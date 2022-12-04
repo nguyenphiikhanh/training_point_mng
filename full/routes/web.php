@@ -47,6 +47,8 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
     Route::get('/quan-li-dot-xet-duyet',[TimeController::class,'index'])->name('time.list');
     Route::post('/quan-li-dot-xet-duyet',[TimeController::class,'store'])->name('time.store');
     Route::post('/quan-li-dot-xet-duyet/{id}/update',[TimeController::class,'update'])->name('time.update');
+    Route::get('/quan-li-dot-xet-duyet/{id}/delete',[TimeController::class,'delete'])->name('time.delete');
+
 
     //END: quản lí đợt duyệt.
 
