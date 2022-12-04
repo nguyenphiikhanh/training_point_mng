@@ -88,7 +88,7 @@
                                                 <i data-feather="edit-2" class="me-50"></i>
                                                 <span>Sửa</span>
                                             </a>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="#" onclick="delete_time(`{{route('page.time.delete',['id' => $time->id])}}`)">
                                                 <i data-feather="trash" class="me-50"></i>
                                                 <span>Xoá</span>
                                             </a>
@@ -119,7 +119,7 @@
                                                 <i data-feather="edit-2" class="me-50"></i>
                                                 <span>Sửa</span>
                                             </a>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="#" onclick="delete_time(`{{route('page.time.delete',['id' => $time->id])}}`)">
                                                 <i data-feather="trash" class="me-50"></i>
                                                 <span>Xoá</span>
                                             </a>
