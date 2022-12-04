@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         @if ($faculties)
-                            <div class="mt-5 d-flex justify-content-center">{{ $faculties->links() }}</div>
+                            <div class="mt-5 d-flex justify-content-center">{{ $faculties->links('pagination::bootstrap-4') }}</div>
                         @endif
                     </div>
                 </div>
