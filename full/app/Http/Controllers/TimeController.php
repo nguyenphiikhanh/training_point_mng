@@ -95,8 +95,24 @@ class TimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         //
+
+        try{
+            $time = DotXetDuyet::find($id);
+            if(!$time){
+                return back()->with('error',__('custom_message.not_exist',['attribute' => 'Đợt xét duyệt này']));
+            }
+            else{
+            $time->delete();
+            return back()->with('success',__('custom_message.delete.success',['attribute' => 'đợt xét duyệt']));
+            }
+
+        }
+        catch(\Exception $e){
+            Log::error($e->getMessage(). $e->getTraceAsString());
+            return back()->with('error',__('custom_message.failed'));
+        }
     }
 }
