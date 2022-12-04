@@ -40,7 +40,6 @@
                                             <tr>
                                                 <th scope="col" style="width: 5%;" class="text-nowrap">STT</th>
                                                 <th scope="col" style="width: 40%;" class="text-nowrap">Tên khoa</th>
-                                                <th scope="col" style="width: 50%;" class="text-nowrap">Số lượng lớp</th>
                                                 <th scope="col" style="width: 5%;"></th>
                                             </tr>
                                         </thead>
@@ -49,7 +48,6 @@
                                                 <tr>
                                                     <td class="text-nowrap">{{ $index + 1 }}</td>
                                                     <td class="text-nowrap">{{ $faculty->ten_khoa }}</td>
-                                                    <td class="text-nowrap">50</td>
                                                     <td>
                                                         <div class="dropdown">
                                                             <button type="button"
