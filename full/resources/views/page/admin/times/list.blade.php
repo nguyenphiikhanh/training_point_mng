@@ -44,8 +44,8 @@
                         <div class="d-flex align-content-center justify-content-between w-100">
                           <div class="input-group input-group-merge">
                             <span class="input-group-text"><i data-feather="search" class="text-muted"></i></span>
-                            <input type="text" class="form-control" name="details" id="todo-search" placeholder="Tìm kiếm"
-                              aria-label="Search..." aria-describedby="todo-search" />
+                            <input type="text" class="form-control" name="details" id="todo-search" value="{{Request::get('details') ? Request::get('details') : '' }}"
+                            placeholder="Tìm kiếm" />
                               <button class="btn btn-primary">Tìm</button>
                           </div>
                         </div>
@@ -83,13 +83,14 @@
                                             <i data-feather="more-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#update-time-{{$time->id}}">
                                                 <i data-feather="edit-2" class="me-50"></i>
-                                                <span>Edit</span>
+                                                <span>Sửa</span>
                                             </a>
                                             <a class="dropdown-item" href="#">
                                                 <i data-feather="trash" class="me-50"></i>
-                                                <span>Delete</span>
+                                                <span>Xoá</span>
                                             </a>
                                         </div>
                                     </div>
@@ -113,7 +114,8 @@
                                             <i data-feather="more-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#update-time-{{$time->id}}">
                                                 <i data-feather="edit-2" class="me-50"></i>
                                                 <span>Sửa</span>
                                             </a>
@@ -141,7 +143,7 @@
             <div class="modal modal-slide-in sidebar-todo-modal fade" id="new-task-modal">
               <div class="modal-dialog sidebar-lg">
                 <div class="modal-content p-0">
-                  <form id="form-modal-todo" method="post" action="{{route('page.time.store')}}" class="todo-modal needs-validation">
+                  <form id="form-modal-todo" method="post" action="{{route('page.time.store')}}" class="todo-modal">
                       @csrf
                     <div class="modal-header align-items-center mb-1">
                       <h5 class="modal-title">Mở đợt xét duyệt mới</h5>
@@ -182,6 +184,52 @@
               </div>
             </div>
             <!-- Right Sidebar ends -->
+
+            @foreach ($times as $time)
+            <div class="modal modal-slide-in sidebar-todo-modal fade" id="update-time-{{$time->id}}">
+                <div class="modal-dialog sidebar-lg">
+                  <div class="modal-content p-0">
+                    <form id="form-modal-todo" method="post" action="{{route('page.time.update',['id' => $time->id])}}" class="todo-modal">
+                        @csrf
+                      <div class="modal-header align-items-center mb-1">
+                        <h5 class="modal-title">Chỉnh sửa xét duyệt</h5>
+                        <div class="todo-item-action d-flex align-items-center justify-content-between ms-auto">
+                          <span class="todo-item-favorite cursor-pointer me-75"></span>
+                          <i data-feather="x" class="cursor-pointer" data-bs-dismiss="modal" stroke-width="3"></i>
+                        </div>
+                      </div>
+                      <div class="modal-body flex-grow-1 pb-sm-0 pb-3">
+                        <div class="action-tags">
+                          <div class="mb-1">
+                            <label for="time_content" class="form-label">Nội dung</label>
+                            <input type="text" name="time_content" value="{{$time->name}}"
+                              class="new-todo-item-title form-control" required placeholder="Nhập nội dung" />
+                          </div>
+
+                          <div class="mb-1">
+                            <label for="end_time" class="form-label">Thời gian kết thúc</label>
+                            <input type="text" placeholder="Thời gian kết thúc" value="{{\Illuminate\Support\Carbon::parse($time->deadline)->format('d/m/Y H:i')}}" class="form-control task-due-date"
+                              name="end_time" />
+                          </div>
+                        </div>
+                        <div class="my-1">
+                          <button onclick="endtime_valid(event)" class="btn btn-primary add-todo-item me-1">
+                            Lưu
+                          </button>
+                          <button type="reset" class="btn btn-info add-todo-item me-1">
+                              Nhập lại
+                            </button>
+                          <button type="button" class="btn btn-outline-secondary add-todo-item"
+                            data-bs-dismiss="modal">
+                            Hủy
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            @endforeach
           </div>
         </div>
       </div>

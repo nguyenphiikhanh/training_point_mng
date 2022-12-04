@@ -54,17 +54,6 @@ class TimeController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -74,6 +63,30 @@ class TimeController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try{
+            $time = DotXetDuyet::find($id);
+            if(!$time){
+                return back()->with('error',__('custom_message.not_exist',['attribute' => 'Đợt xét duyệt này']));
+            }
+            else{
+            $time_content = $request->time_content;
+            $end_time = $request->end_time;
+            //convert end_time
+            $end_time = str_replace('/','-',$end_time);
+            //
+            $time->update([
+                'name' => $time_content,
+                'deadline' => date('Y-m-d H:i',strtotime($end_time)),
+            ]);
+
+            return back()->with('success',__('custom_message.update.success',['attribute' => 'đợt xét duyệt']));
+            }
+
+        }
+        catch(\Exception $e){
+            Log::error($e->getMessage(). $e->getTraceAsString());
+            return back()->with('error',__('custom_message.failed'));
+        }
     }
 
     /**
