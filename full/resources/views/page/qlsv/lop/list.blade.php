@@ -58,7 +58,7 @@
                               </a>
                               <a class="dropdown-item" href="{{ route('page.user.student')}}">
                                 <i data-feather="user" class="me-50"></i>
-                                <span>Sinh viên</span>
+                                <span>Danh sách sinh viên</span>
                               </a>
                               <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
                                 <i data-feather="trash" class="me-50"></i>

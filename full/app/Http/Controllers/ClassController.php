@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Khoa;
 use Illuminate\Http\Request;
 
 class ClassController extends Controller
@@ -14,7 +15,8 @@ class ClassController extends Controller
     public function index()
     {
         //
-        return view('page.bcn_khoa.lop.list');
+        $faculties = Khoa::all();
+        return view('page.qlsv.lop.list');
     }
 
     /**
