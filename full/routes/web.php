@@ -30,21 +30,45 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
     Route::get('/doi-mat-khau',[UserController::class,'password_change_view'])->name('password.change.view');
     Route::post('/doi-mat-khau',[UserController::class,'password_change'])->name('password.change.store');
 
-    //BEGIN: quản lí khoa. Role: ADMIN
+    /**
+     * BEGIN: quản lí khoa.
+     * Role: ADMIN
+     */
     Route::get('/quan-li-khoa',[FacultController::class,'index'])->name('faculty.list');
     Route::post('/quan-li-khoa',[FacultController::class,'store'])->name('faculty.store');
     Route::post('/quan-li-khoa/{id}/update',[FacultController::class,'update'])->name('faculty.update');
     Route::get('/quan-li-khoa/{id}/delete',[FacultController::class,'destroy'])->name('faculty.destroy');
     //END: quản lí khoa.
 
-    //BEGIN: quản lí đợt duyệt. Role: ADMIN
+    /**
+     * BEGIN: quản lí đợt duyệt.
+     *  Role: ADMIN
+     */
     Route::get('/quan-li-dot-xet-duyet',[TimeController::class,'index'])->name('time.list');
-    Route::get('/quan-li-nguoi-dung',[UserController::class,'index'])->name('user.users');
+    Route::post('/quan-li-dot-xet-duyet',[TimeController::class,'store'])->name('time.store');
+    Route::post('/quan-li-dot-xet-duyet/{id}/update',[TimeController::class,'update'])->name('time.update');
+    Route::get('/quan-li-dot-xet-duyet/{id}/delete',[TimeController::class,'delete'])->name('time.delete');
+
+
     //END: quản lí đợt duyệt.
 
-    //BEGIN: quản lí lớp. ROLE: Cán bộ khoa
+    /**
+     * BEGIN: quản lí lớp.
+     * ROLE: QLSV
+     */
     Route::get('/quan-li-lop',[ClassController::class,'index'])->name('class.list');
-    Route::get('/quan-li-lop/quan-li-sinh-vien',[StudentController::class,'index'])->name('user.student');
-    //END: quản lí đượt duyệt.
+    //END: Lớp
+
+    /**
+     * BEGIN: quản lí sinh viên
+     *  ROLE: QLSV
+     */
+    Route::get('/quan-li-lop/sinh-vien',[StudentController::class,'index'])->name('user.student');
+     //END: QLSV
+
+    Route::get('/quan-li-nguoi-dung',[UserController::class,'index'])->name('user.users');
+
+
+
 
 });

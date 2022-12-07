@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DotXetDuyet extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }
