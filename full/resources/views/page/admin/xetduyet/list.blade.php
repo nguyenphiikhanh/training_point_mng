@@ -67,7 +67,7 @@
                         <tbody>
                             @foreach ($times as $time)
                              @if (\Illuminate\Support\Carbon::now()->lt($time->deadline) AND (\Illuminate\Support\Carbon::now()->gte($time->start_time)) )
-                            <tr class="table-success">  
+                            <tr class="table-success">
                                 <td colspan="1">
                                     <span class="fw-bold">{{$time->name}}</span>
                                 </td>
