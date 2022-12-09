@@ -60,13 +60,14 @@
                             <th>Nội dung</th>
                             <th>Thời gian bắt đầu</th>
                             <th>Thời gian kết thúc</th>
-                            <th></th>
+                            <th>Trạng thái</th>
+                            <th> Hành động</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach ($times as $time)
                              @if (\Illuminate\Support\Carbon::now()->lt($time->deadline))
-                            <tr class="table-success">
+                            <tr class="table-success">  
                                 <td colspan="1">
                                     <span class="fw-bold">{{$time->name}}</span>
                                 </td>
