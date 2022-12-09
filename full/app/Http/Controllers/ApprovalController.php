@@ -7,7 +7,7 @@ use App\Models\DotXetDuyet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class TimeController extends Controller
+class ApprovalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class TimeController extends Controller
             $times->where('name','like',"%$request->details%");
         }
         $times = $times->paginate(AppUtils::ITEMS_PER_PAGE);
-        return view('page.admin.times.list',['times' => $times]);
+        return view('page.admin.xetduyet.list',['times' => $times]);
     }
 
     /**
