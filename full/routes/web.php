@@ -5,7 +5,7 @@ use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\FacultController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\TimeController;
+use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,10 +44,10 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
      * BEGIN: quản lí đợt duyệt.
      *  Role: ADMIN
      */
-    Route::get('/quan-li-dot-xet-duyet',[TimeController::class,'index'])->name('time.list');
-    Route::post('/quan-li-dot-xet-duyet',[TimeController::class,'store'])->name('time.store');
-    Route::post('/quan-li-dot-xet-duyet/{id}/update',[TimeController::class,'update'])->name('time.update');
-    Route::get('/quan-li-dot-xet-duyet/{id}/delete',[TimeController::class,'delete'])->name('time.delete');
+    Route::get('/quan-li-dot-xet-duyet',[ApprovalController::class,'index'])->name('time.list');
+    Route::post('/quan-li-dot-xet-duyet',[ApprovalController::class,'store'])->name('time.store');
+    Route::post('/quan-li-dot-xet-duyet/{id}/update',[ApprovalController::class,'update'])->name('time.update');
+    Route::get('/quan-li-dot-xet-duyet/{id}/delete',[ApprovalController::class,'delete'])->name('time.delete');
 
 
     //END: quản lí đợt duyệt.
