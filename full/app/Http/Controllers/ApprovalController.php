@@ -36,12 +36,16 @@ class ApprovalController extends Controller
         //
         try{
             $time_content = $request->time_content;
+            $start_time = $request->start_time;
             $end_time = $request->end_time;
             //convert end_time
+            $start_time = str_replace('/','-',$start_time);
+            // dd($start_time);
             $end_time = str_replace('/','-',$end_time);
             //
             DotXetDuyet::create([
                 'name' => $time_content,
+                'start_time' => date('Y-m-d H:i',strtotime($start_time)),
                 'deadline' => date('Y-m-d H:i',strtotime($end_time)),
             ]);
 
@@ -70,13 +74,16 @@ class ApprovalController extends Controller
             }
             else{
             $time_content = $request->time_content;
+            $start_time = $request->start_time;
             $end_time = $request->end_time;
             //convert end_time
+            $start_time = str_replace('/','-',$start_time);
             $end_time = str_replace('/','-',$end_time);
             //
             $time->update([
                 'name' => $time_content,
-                'deadline' => date('Y-m-d H:i',strtotime($end_time)),
+                'start_time' => date('Y-m-d H:i',strtotime($start_time)), 
+                'deadline' => date('Y-m-d H:i',strtotime($end_time)), 
             ]);
 
             return back()->with('success',__('custom_message.update.success',['attribute' => 'đợt xét duyệt']));

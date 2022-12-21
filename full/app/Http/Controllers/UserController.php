@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Khoa;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
@@ -17,7 +19,11 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('page.admin.user.users');
+        $list_khoa = DB::table('khoas')->get();
+        // dd($list_khoa);
+        return view('page.admin.user.users',[
+            'list_khoa' => $list_khoa,
+        ]);
     }
 
     public function password_change_view(){
