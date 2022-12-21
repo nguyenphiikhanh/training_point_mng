@@ -38,7 +38,7 @@
                       <th scope="col" class="text-nowrap">Họ và tên</th>
                       <th scope="col" class="text-nowrap">Vai trò</th>
                       <th scope="col" class="text-nowrap">Khoa</th>
-                      
+
                       <th scope="col"></th>
                     </tr>
                   </thead>
@@ -117,7 +117,7 @@
                               <option value="{{\App\Http\Utils\RoleUtils::ROLE_BCN_KHOA}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_BCN_KHOA)}}</option>
                               <option value="{{\App\Http\Utils\RoleUtils::ROLE_QLSV}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_QLSV)}}</option>
                               <option value="{{\App\Http\Utils\RoleUtils::ROLE_CVHT}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_CVHT)}}</option>
-                              <option value="{{\App\Http\Utils\RoleUtils::ROLE_STUDENT}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_STUDENT)}}</option> 
+                              <option value="{{\App\Http\Utils\RoleUtils::ROLE_STUDENT}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_STUDENT)}}</option>
                             </select>
                           </div>
                       <div class="mb-1">
