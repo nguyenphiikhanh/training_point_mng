@@ -67,6 +67,8 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
      //END: QLSV
 
     Route::get('/quan-li-nguoi-dung',[UserController::class,'index'])->name('user.users');
+    Route::post('/quan-li-nguoi-dung',[UserController::class,'addUser'])->name('user.addUserHasRrole');
+
 
 
 
