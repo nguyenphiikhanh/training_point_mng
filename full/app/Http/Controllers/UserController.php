@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+
         $list_khoa = DB::table('khoas')->get();
         $listUsers = User::select('users.*', 'khoas.ten_khoa as tenKhoa')
         ->leftJoin('khoas','khoas.id','users.id_khoa')
