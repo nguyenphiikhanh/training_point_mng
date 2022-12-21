@@ -21,8 +21,7 @@ function endtime_valid(event, time_content_id, start_time_id, end_time_id) {
             confirmButtonColor: '#48CF85',
             confirmButtonText: 'Đóng',
         })
-    }
-    if (!end_time && time_content) {
+    } else if (!end_time && time_content) {
         event.preventDefault();
         Swal.fire({
             title: 'Lỗi!',
