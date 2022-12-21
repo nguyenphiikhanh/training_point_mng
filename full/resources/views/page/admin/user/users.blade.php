@@ -189,7 +189,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form class="form form-vertical">
+                <form class="form form-vertical" action="{{route('')}}">
                   <div class="row">
                     <div class="col-12">
                       <div class="mb-1">
@@ -228,7 +228,7 @@
                             <label class="form-label" for="basicSelect">Role</label>
                             <select class="form-select" id="basicSelect">
                               <option>Chọn role</option>
-                              <option>Blade Runner</option>
+                              <option value="{{\App\Http\Utils\RoleUtils::ROLE_BCN_KHOA}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_BCN_KHOA)}}</option>
                               <option>Thor Ragnarok</option>
                               <option>Blade Runner</option>
                               <option>Thor Ragnarok</option>
@@ -238,10 +238,9 @@
                         <label class="form-label" for="basicSelect">Khoa</label>
                         <select class="form-select" id="basicSelect">
                           <option>Chọn khoa</option>
-                          <option>Blade Runner</option>
-                          <option>Thor Ragnarok</option>
-                          <option>Blade Runner</option>
-                          <option>Thor Ragnarok</option>
+                          @foreach($list_khoa as $khoa)
+                          <option value="{{$khoa->id}}">{{$khoa->ten_khoa}}</option>
+                          @endforeach
                         </select>
                       </div>
                       <div class="mb-1">
