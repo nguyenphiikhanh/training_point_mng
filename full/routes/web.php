@@ -66,8 +66,10 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
     Route::get('/quan-li-lop/sinh-vien',[StudentController::class,'index'])->name('user.student');
      //END: QLSV
 
+    Route::get('/quan-li-nguoi-dung',[UserController::class,'index'])->name('user.list');
     Route::get('/quan-li-nguoi-dung',[UserController::class,'index'])->name('user.users');
     Route::post('/quan-li-nguoi-dung',[UserController::class,'addUser'])->name('user.addUserHasRrole');
+    Route::post('/quan-li-nguoi-dung',[UserController::class,'store'])->name('user.store');
 
 
 

@@ -36,142 +36,43 @@
                       <th scope="col" class="text-nowrap">STT</th>
                       <th scope="col" class="text-nowrap">Tên đăng nhập</th>
                       <th scope="col" class="text-nowrap">Họ và tên</th>
-                      <th scope="col" class="text-nowrap">Ngày sinh</th>
-                      <th scope="col" class="text-nowrap">Giới tính</th>
+                      <th scope="col" class="text-nowrap">Vai trò</th>
+                      <th scope="col" class="text-nowrap">Khoa</th>
+                      
                       <th scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($listUsers as $index => $user)
                     <tr>
-                        <td class="text-nowrap">1</td>
-                        <td class="text-nowrap">695105006</td>
-                        <td class="text-nowrap">Nguyên Thị A</td>
-                        <td class="text-nowrap">05/05/2001</td>
-                        <td class="text-nowrap">Nữ</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                              data-bs-toggle="dropdown">
-                              <i data-feather="more-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalCenter">
-                                <i data-feather="edit-2" class="me-50"></i>
-                                <span>Edit</span>
-                              </a>
-                              <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
-                                <i data-feather="trash" class="me-50"></i>
-                                <span>Delete</span>
-                              </a>
-                            </div>
+                      <td class="text-nowrap">{{ $index + 1 }}</td>
+                      <td class="text-nowrap">{{ $user->username }}</td>
+                      <td class="text-nowrap">{{ $user->first_name. " ".$user->last_name  }}</td>
+                      <td class="text-nowrap">{{ \App\Http\Utils\RoleUtils::getRoleName($user->role)}}</td>
+                      <td class="text-nowrap">{{ $user->tenKhoa}}</td>
+
+                      <td>
+                        <div class="dropdown">
+                          <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
+                            data-bs-toggle="dropdown">
+                            <i data-feather="more-vertical"></i>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                              data-bs-target="#exampleModalCenter">
+                              <i data-feather="edit-2" class="me-50"></i>
+                              <span>Edit</span>
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
+                              <i data-feather="trash" class="me-50"></i>
+                              <span>Delete</span>
+                            </a>
                           </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1</td>
-                        <td class="text-nowrap">695105006</td>
-                        <td class="text-nowrap">Nguyên Thị A</td>
-                        <td class="text-nowrap">05/05/2001</td>
-                        <td class="text-nowrap">Nữ</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                              data-bs-toggle="dropdown">
-                              <i data-feather="more-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalCenter">
-                                <i data-feather="edit-2" class="me-50"></i>
-                                <span>Edit</span>
-                              </a>
-                              <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
-                                <i data-feather="trash" class="me-50"></i>
-                                <span>Delete</span>
-                              </a>
-                            </div>
-                          </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1</td>
-                        <td class="text-nowrap">695105006</td>
-                        <td class="text-nowrap">Nguyên Thị A</td>
-                        <td class="text-nowrap">05/05/2001</td>
-                        <td class="text-nowrap">Nữ</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                              data-bs-toggle="dropdown">
-                              <i data-feather="more-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalCenter">
-                                <i data-feather="edit-2" class="me-50"></i>
-                                <span>Edit</span>
-                              </a>
-                              <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
-                                <i data-feather="trash" class="me-50"></i>
-                                <span>Delete</span>
-                              </a>
-                            </div>
-                          </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1</td>
-                        <td class="text-nowrap">695105006</td>
-                        <td class="text-nowrap">Nguyên Thị A</td>
-                        <td class="text-nowrap">05/05/2001</td>
-                        <td class="text-nowrap">Nữ</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                              data-bs-toggle="dropdown">
-                              <i data-feather="more-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalCenter">
-                                <i data-feather="edit-2" class="me-50"></i>
-                                <span>Edit</span>
-                              </a>
-                              <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
-                                <i data-feather="trash" class="me-50"></i>
-                                <span>Delete</span>
-                              </a>
-                            </div>
-                          </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap">1</td>
-                        <td class="text-nowrap">695105006</td>
-                        <td class="text-nowrap">Nguyên Thị A</td>
-                        <td class="text-nowrap">05/05/2001</td>
-                        <td class="text-nowrap">Nữ</td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0"
-                              data-bs-toggle="dropdown">
-                              <i data-feather="more-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalCenter">
-                                <i data-feather="edit-2" class="me-50"></i>
-                                <span>Edit</span>
-                              </a>
-                              <a class="dropdown-item" href="#" onclick="delete_class(`{{ route('page.class.list') }}`)">
-                                <i data-feather="trash" class="me-50"></i>
-                                <span>Delete</span>
-                              </a>
-                            </div>
-                          </div>
-                        </td>
-                    </tr>
+                        </div>
+                      </td>
+                  </tr>
+                    @endforeach
+
                   </tbody>
                 </table>
               </div>
@@ -189,7 +90,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form class="form form-vertical" action="{{route('')}}">
+                <form method="post" action="{{route('page.user.store')}}" class="form form-vertical">
                   <div class="row">
                     <div class="col-12">
                       <div class="mb-1">
@@ -202,23 +103,7 @@
                         <input type="text" id="fullName" class="form-control" name="fullName"
                           placeholder="Nhập họ và tên"/>
                       </div>
-                      <div class="mb-1">
-                        <label class="form-label" for="dob">Ngày sinh</label>
-                        <input type="date" id="dob" class="form-control" name="dob"
-                          placeholder="dd/MM/yyyy"/>
-                      </div>
-                      <div class="demo-inline-spacing mb-1">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="male"
-                                value="option1" checked />
-                            <label class="form-check-label" for="male">Nam</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="female"
-                                value="option2" />
-                            <label class="form-check-label" for="female">Nữ</label>
-                        </div>
-                        </div>
+
                         <div class="mb-1">
                             <label class="form-label" for="password">Mật khẩu</label>
                             <input type="password" id="password" class="form-control" name="password"
@@ -228,10 +113,11 @@
                             <label class="form-label" for="basicSelect">Role</label>
                             <select class="form-select" id="basicSelect">
                               <option>Chọn role</option>
+                              <option value="{{\App\Http\Utils\RoleUtils::ROLE_ADMIN}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_ADMIN)}}</option>
                               <option value="{{\App\Http\Utils\RoleUtils::ROLE_BCN_KHOA}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_BCN_KHOA)}}</option>
-                              <option>Thor Ragnarok</option>
-                              <option>Blade Runner</option>
-                              <option>Thor Ragnarok</option>
+                              <option value="{{\App\Http\Utils\RoleUtils::ROLE_QLSV}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_QLSV)}}</option>
+                              <option value="{{\App\Http\Utils\RoleUtils::ROLE_CVHT}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_CVHT)}}</option>
+                              <option value="{{\App\Http\Utils\RoleUtils::ROLE_STUDENT}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_STUDENT)}}</option> 
                             </select>
                           </div>
                       <div class="mb-1">
@@ -243,7 +129,7 @@
                           @endforeach
                         </select>
                       </div>
-                      <div class="mb-1">
+                      {{-- <div class="mb-1">
                         <label class="form-label" for="basicSelect">Lớp</label>
                         <select class="form-select" id="basicSelect">
                           <option>Chọn Lớp</option>
@@ -252,7 +138,7 @@
                           <option>Blade Runner</option>
                           <option>Thor Ragnarok</option>
                         </select>
-                      </div>
+                      </div> --}}
                     </div>
                   </div>
                 </form>
