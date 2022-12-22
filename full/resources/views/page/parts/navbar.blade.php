@@ -5,7 +5,7 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item me-auto"><a class="navbar-brand" href="index.html"><span class="brand-logo">
+                <li class="nav-item me-auto"><a class="navbar-brand" href="{{route('page.index')}}"><span class="brand-logo">
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                 <defs>
@@ -63,27 +63,28 @@
                 @endif
 
                 @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
+                    <li class="nav-item {{ request()->routeIs('page.khoaDaoTao*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.khoaDaoTao.list')}}"><i
+                                data-feather="star"></i><span class="menu-title text-truncate">Quản lí Khoá đào tạo</span></a>
+                    </li>
+                @endif
+
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
+                    <li class="nav-item {{ request()->routeIs('page.user*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.user.index')}}"><i
+                                data-feather="star"></i><span class="menu-title text-truncate">Quản lí người dùng</span></a>
+                    </li>
+                @endif
+
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
                 <li class="nav-item {{ request()->routeIs('page.time*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.time.list')}}"><i
                     data-feather="star"></i><span class="menu-title text-truncate">Quản lí Xét duyệt</span></a>
                 </li>
                 @endif
 
-                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_QLSV OR $user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
+                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_QLSV)
                 <li class="nav-item {{ request()->routeIs('page.class*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.class.list')}}"><i
                     data-feather="star"></i><span class="menu-title text-truncate">Quản lí Lớp</span></a>
                 </li>
                 @endif
-
-                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
-                <li class="nav-item {{ request()->routeIs('page.user*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.user.users')}}"><i
-                    data-feather="star"></i><span class="menu-title text-truncate">Quản lí người dùng</span></a>
-                </li>
-                @endif
-                {{-- @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_QLSV)
-                <li class="nav-item {{ request()->routeIs('page.user*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.user.users')}}"><i
-                    data-feather="star"></i><span class="menu-title text-truncate">Quản lí sinh viên</span></a>
-                </li>
-                @endif --}}
             </ul>
         </div>
     </div>
