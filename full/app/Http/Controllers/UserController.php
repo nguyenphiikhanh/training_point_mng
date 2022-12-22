@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Utils\RoleUtils;
+use App\Models\DotXetDuyet;
 use App\Models\Khoa;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,11 +20,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        
         $list_khoa = DB::table('khoas')->get();
-        // dd($list_khoa);
+        $listUsers = User::select('users.*', 'khoas.ten_khoa as tenKhoa')
+        ->leftJoin('khoas','khoas.id','users.id_khoa')
+        ->whereIn('users.role',[RoleUtils::ROLE_BCN_KHOA,RoleUtils::ROLE_CVHT,RoleUtils::ROLE_QLSV])
+        ->get();
+// dd($listUsers);
+
         return view('page.admin.user.users',[
             'list_khoa' => $list_khoa,
+            'listUsers' => $listUsers,
         ]);
     }
 
@@ -60,6 +68,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        return back()->with('error', __('custom_message.failed'));
     }
 
     /**
