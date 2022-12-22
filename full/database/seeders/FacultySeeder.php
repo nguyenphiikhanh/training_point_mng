@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Khoa;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class FacultySeeder extends Seeder
 {
@@ -15,22 +16,40 @@ class FacultySeeder extends Seeder
     public function run()
     {
         //
-        $facuties_seeder = [
-            ['ten_khoa' => 'Hoá học'],
-            ['ten_khoa' => 'Toán học'],
-            ['ten_khoa' => 'Lịch sử'],
-            ['ten_khoa' => 'Công nghệ'],
-            ['ten_khoa' => 'Vật lý'],
-            ['ten_khoa' => 'Sinh học'],
-            ['ten_khoa' => 'Giáo dục Quốc phòng'],
-            ['ten_khoa' => 'Giáo dục thể chất'],
-            ['ten_khoa' => 'Giáo dục đặc biệt'],
-            ['ten_khoa' => 'Tâm lý học'],
+        DB::table('khoas')->updateOrInsert(
+            ['id' => 1],
             ['ten_khoa' => 'Công nghệ thông tin'],
-        ];
+        );
 
-        foreach($facuties_seeder as $faculty){
-            Khoa::create($faculty);
-        }
+        DB::table('khoas')->updateOrInsert(
+            ['id' => 2],
+            ['ten_khoa' => 'Toán học'],
+        );
+
+        DB::table('khoas')->updateOrInsert(
+            ['id' => 3],
+            ['ten_khoa' => 'Lịch sử'],
+        );
+
+        DB::table('khoas')->updateOrInsert(
+            ['id' => 4],
+            ['ten_khoa' => 'Công nghệ'],
+        );
+
+        DB::table('khoas')->updateOrInsert(
+            ['id' => 5],
+            ['ten_khoa' => 'Vật lý'],
+        );
+
+        DB::table('khoas')->updateOrInsert(
+            ['id' => 6],
+            ['ten_khoa' => 'Sinh học'],
+        );
+
+        DB::table('khoas')->updateOrInsert(
+            ['id' => 7],
+            ['ten_khoa' => 'Giáo dục Quốc phòng'],
+        );
+
     }
 }
