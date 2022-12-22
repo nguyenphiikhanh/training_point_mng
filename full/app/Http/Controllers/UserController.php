@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
+use App\Http\Utils\AppUtils;
 use App\Http\Utils\RoleUtils;
 use App\Models\DotXetDuyet;
 use App\Models\Khoa;
@@ -18,15 +20,20 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $list_khoa = DB::table('khoas')->get();
+        $id_khoa = $request->get('khoa_filter');
         $listUsers = User::select('users.*', 'khoas.ten_khoa as tenKhoa')
         ->leftJoin('khoas','khoas.id','users.id_khoa')
-        ->whereIn('users.role',[RoleUtils::ROLE_BCN_KHOA,RoleUtils::ROLE_CVHT,RoleUtils::ROLE_QLSV])
-        ->get();
-// dd($listUsers);
+        ->whereIn('users.role',[RoleUtils::ROLE_BCN_KHOA,RoleUtils::ROLE_CVHT,RoleUtils::ROLE_QLSV]);
+
+        if($id_khoa){
+            $listUsers->where('users.id_khoa',$id_khoa);
+        }
+
+        $listUsers = $listUsers->paginate(AppUtils::ITEMS_PER_PAGE);
 
         return view('page.admin.user.users',[
             'list_khoa' => $list_khoa,
@@ -65,9 +72,31 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         //
+        try{
+            $first_name = $request->first_name;
+            $last_name = $request->last_name;
+            $username = $request->username;
+            $password = $request->password;
+            $role = $request->role;
+            $id_khoa = $request->id_khoa;
+            User::create([
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'username' => $username,
+                'password' => Hash::make($password),
+                'role' => $role,
+                'id_khoa' => $id_khoa,
+            ]);
+
+            return back()->with('success',__('custom_message.create.success',['attribute' => 'người dùng']));
+        }
+        catch(\Exception $e){
+            Log::error($e->getMessage(). $e->getTraceAsString());
+            return back()->with('error', __('custom_message.failed'));
+        }
     }
 
     /**
