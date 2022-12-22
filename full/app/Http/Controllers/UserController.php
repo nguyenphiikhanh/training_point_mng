@@ -99,16 +99,6 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -117,9 +107,37 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         //
+        try{
+            $user = User::find($id);
+            if(!$user){
+                return back()->with('error', __('custom_message.not_exist',['attribute' => 'Người dùng']));
+            }
+            else{
+                $first_name = $request->first_name;
+                $last_name = $request->last_name;
+                $username = $request->username;
+                $role = $request->role;
+                $id_khoa = $request->id_khoa;
+
+                $user->update([
+                    'first_name' => $first_name,
+                    'last_name' => $last_name,
+                    'username' => $username,
+                    'role' => $role,
+                    'id_khoa' => $id_khoa,
+                ]);
+                return back()->with('success',__('custom_message.update.success',['attribute' => 'người dùng']));
+            }
+
+
+        }
+        catch(\Exception $e){
+            Log::error($e->getMessage(). $e->getTraceAsString());
+            return back()->with('error', __('custom_message.failed'));
+        }
     }
 
     /**
@@ -131,5 +149,19 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        try{
+            $user = User::find($id);
+            if(!$user){
+                return back()->with('error', __('custom_message.not_exist',['attribute' => 'Người dùng']));
+            }
+            else{
+                $user->delete();
+                return back()->with('success',__('custom_message.delete.success',['attribute' => 'người dùng']));
+            }
+        }
+        catch(\Exception $e){
+            Log::error($e->getMessage(). $e->getTraceAsString());
+            return back()->with('error', __('custom_message.failed'));
+        }
     }
 }

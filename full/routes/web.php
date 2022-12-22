@@ -49,8 +49,8 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
     // Quản lí người dùng
     Route::get('/nguoi-dung',[UserController::class,'index'])->name('user.index');
     Route::post('/nguoi-dung',[UserController::class,'store'])->name('user.store');
-    Route::post('/nguoi-dung/{id}/update',[ApprovalController::class,'update'])->name('user.update');
-    Route::get('/nguoi-dung/{id}/delete',[ApprovalController::class,'destroy'])->name('user.delete');
+    Route::post('/nguoi-dung/{id}/update',[UserController::class,'update'])->name('user.update');
+    Route::get('/nguoi-dung/{id}/delete',[UserController::class,'destroy'])->name('user.delete');
 
     // Quản lý khoá đào tạo
     Route::get('/khoa-dao-tao',[KhoaDaoTaoController::class,'index'])->name('khoaDaoTao.list');

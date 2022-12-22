@@ -69,13 +69,13 @@
                           </button>
                           <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                              data-bs-target="#exampleModalCenter">
+                              data-bs-target="#edit-user-{{$index}}">
                               <i data-feather="edit-2" class="me-50"></i>
-                              <span>Edit</span>
+                              <span>Sửa</span>
                             </a>
-                            <a class="dropdown-item" href="#" onclick="deleteUser(`{{ route('page.class.list') }}`)">
+                            <a class="dropdown-item" href="#" onclick="deleteUser(`{{ route('page.user.delete',[$user->id]) }}`)">
                               <i data-feather="trash" class="me-50"></i>
-                              <span>Delete</span>
+                              <span>Xoá</span>
                             </a>
                           </div>
                         </div>
@@ -158,6 +158,65 @@
           </div>
         </div>
         <!-- Vertical modal end-->
+        @foreach ($listUsers as $index => $user)
+        <div class="modal fade" id="edit-user-{{$index}}" tabindex="-1" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Sửa thông tin người dùng</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="{{ route('page.user.update',[$user->id])}}" class="form form-vertical">
+                  @csrf
+                <div class="row">
+                  <div class="col-12">
+                    <div class="mb-1">
+                      <label class="form-label">Họ và tên đệm</label>
+                      <input type="text"  class="form-control" name="first_name"
+                        placeholder="Họ và tên đệm" value="{{$user->first_name}}" required/>
+                    </div>
+                    <div class="mb-1">
+                      <label class="form-label">Tên</label>
+                      <input type="text" class="form-control" name="last_name"
+                        placeholder="Tên" value="{{$user->last_name}}" required/>
+                    </div>
+                    <div class="mb-1">
+                      <label class="form-label">Tên đăng nhập</label>
+                      <input type="text" class="form-control" name="username"
+                        placeholder="Tên đăng nhập" value="{{$user->username}}" required/>
+                    </div>
+                      <div class="mb-1">
+                          <label class="form-label" for="role_flg_{{$index}}">Vai trò</label>
+                          <select class="form-select" id="role_flg_{{$index}}" name="role">
+                            <option value="">---Chọn vai trò---</option>
+                            <option {{$user->role == \App\Http\Utils\RoleUtils::ROLE_BCN_KHOA ? 'selected' : ''}} value="{{\App\Http\Utils\RoleUtils::ROLE_BCN_KHOA}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_BCN_KHOA)}}</option>
+                            <option {{$user->role == \App\Http\Utils\RoleUtils::ROLE_QLSV ? 'selected' : ''}} value="{{\App\Http\Utils\RoleUtils::ROLE_QLSV}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_QLSV)}}</option>
+                            <option {{$user->role == \App\Http\Utils\RoleUtils::ROLE_CVHT ? 'selected' : ''}} value="{{\App\Http\Utils\RoleUtils::ROLE_CVHT}}">{{\App\Http\Utils\RoleUtils::getRoleName(\App\Http\Utils\RoleUtils::ROLE_CVHT)}}</option>
+                          </select>
+                        </div>
+                    <div class="mb-1">
+                      <label class="form-label" for="id_khoa_{{$index}}">Khoa</label>
+                      <select class="form-select" id="id_khoa_{{$index}}" name="id_khoa">
+                        <option value="">---Chọn khoa---</option>
+                        @foreach($list_khoa as $khoa)
+                        <option {{$user->id_khoa == $khoa->id ? 'selected' : ''}} value="{{$khoa->id}}">{{$khoa->ten_khoa}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" onclick="validInfo(event,'role_flg_{{$index}}','id_khoa_{{$index}}')" class="btn btn-primary">Lưu</button>
+                  <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+        @endforeach
       </div>
     </div>
   </div>
@@ -165,11 +224,10 @@
 
 @section('js')
     <script>
-        function delete_class(delete_domain) {
-            console.log(delete_domain);
+        function deleteUser(delete_domain) {
             Swal.fire({
                 title: 'Chú ý, bạn không thể hoàn tác hành động này!',
-                text: "Xoá lớp học sẽ xoá toàn bộ dữ liệu liên quan. Bạn có chắc chắn xoá không?",
+                text: "Xoá người dùng này?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
