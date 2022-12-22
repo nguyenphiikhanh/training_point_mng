@@ -85,17 +85,6 @@
                     data-feather="star"></i><span class="menu-title text-truncate">Quản lí Lớp</span></a>
                 </li>
                 @endif
-
-                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_QLSV)
-                <li class="nav-item {{ request()->routeIs('page.user*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.user.users')}}"><i
-                    data-feather="star"></i><span class="menu-title text-truncate">Quản lí sinh viên</span></a>
-                </li>
-                @endif
-                @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
-                <li class="nav-item {{ request()->routeIs('page.user*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.user.users')}}"><i
-                    data-feather="star"></i><span class="menu-title text-truncate">Quản lí người dùng</span></a>
-                </li>
-                @endif
             </ul>
         </div>
     </div>
