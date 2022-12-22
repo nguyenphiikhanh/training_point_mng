@@ -63,13 +63,13 @@
                 @endif
 
                 @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
-                    <li class="nav-item {{ request()->routeIs('page.faculty*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.faculty.list')}}"><i
+                    <li class="nav-item {{ request()->routeIs('page.khoaDaoTao*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.khoaDaoTao.list')}}"><i
                                 data-feather="star"></i><span class="menu-title text-truncate">Quản lí Khoá đào tạo</span></a>
                     </li>
                 @endif
 
                 @if ($user->role == \App\Http\Utils\RoleUtils::ROLE_ADMIN)
-                    <li class="nav-item {{ request()->routeIs('page.user*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.user.users')}}"><i
+                    <li class="nav-item {{ request()->routeIs('page.user*') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{ route('page.user.index')}}"><i
                                 data-feather="star"></i><span class="menu-title text-truncate">Quản lí người dùng</span></a>
                     </li>
                 @endif
