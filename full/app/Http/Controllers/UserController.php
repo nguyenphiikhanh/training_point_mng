@@ -68,7 +68,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        return back()->with('error', __('custom_message.failed'));
     }
 
     /**
