@@ -34,23 +34,23 @@ Route::middleware('user.authenticated')->prefix('')->name('page.')->group(functi
     // ADMIN
     Route::middleware('role.admin')->group(function(){
     // Quản lý Khoa
-    Route::get('/quan-li-khoa',[FacultController::class,'index'])->name('faculty.list');
-    Route::post('/quan-li-khoa',[FacultController::class,'store'])->name('faculty.store');
-    Route::post('/quan-li-khoa/{id}/update',[FacultController::class,'update'])->name('faculty.update');
-    Route::get('/quan-li-khoa/{id}/delete',[FacultController::class,'destroy'])->name('faculty.destroy');
+    Route::get('/khoa',[FacultController::class,'index'])->name('faculty.list');
+    Route::post('/khoa',[FacultController::class,'store'])->name('faculty.store');
+    Route::post('/khoa/{id}/update',[FacultController::class,'update'])->name('faculty.update');
+    Route::get('/khoa/{id}/delete',[FacultController::class,'destroy'])->name('faculty.destroy');
     //
 
-    /**
-     * BEGIN: quản lí đợt duyệt.
-     *  Role: ADMIN
-     */
-    Route::get('/quan-li-dot-xet-duyet',[ApprovalController::class,'index'])->name('time.list');
-    Route::post('/quan-li-dot-xet-duyet',[ApprovalController::class,'store'])->name('time.store');
-    Route::post('/quan-li-dot-xet-duyet/{id}/update',[ApprovalController::class,'update'])->name('time.update');
-    Route::get('/quan-li-dot-xet-duyet/{id}/delete',[ApprovalController::class,'delete'])->name('time.delete');
+    // quản lí đợt xét duyệt
+    Route::get('/xet-duyet-mng',[ApprovalController::class,'index'])->name('time.list');
+    Route::post('/xet-duyet-mng',[ApprovalController::class,'store'])->name('time.store');
+    Route::post('/xet-duyet-mng/{id}/update',[ApprovalController::class,'update'])->name('time.update');
+    Route::get('/xet-duyet-mng/{id}/delete',[ApprovalController::class,'delete'])->name('time.delete');
 
     // Quản lí người dùng
-    Route::get('/quan-li-nguoi-dung',[UserController::class,'index'])->name('user.index');
+    Route::get('/nguoi-dung',[UserController::class,'index'])->name('user.index');
+    Route::post('/nguoi-dung',[UserController::class,'store'])->name('user.store');
+    Route::post('/nguoi-dung/{id}/update',[UserController::class,'update'])->name('user.update');
+    Route::get('/nguoi-dung/{id}/delete',[UserController::class,'destroy'])->name('user.delete');
 
     // Quản lý khoá đào tạo
     Route::get('/khoa-dao-tao',[KhoaDaoTaoController::class,'index'])->name('khoaDaoTao.list');
