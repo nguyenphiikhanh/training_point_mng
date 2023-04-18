@@ -46,8 +46,8 @@
                             <span class="input-group-text"><i data-feather="search" class="text-muted"></i></span>
                             <input type="text" class="form-control" name="details" id="todo-search" value="{{Request::get('details') ? Request::get('details') : '' }}"
                             placeholder="Tìm kiếm" />
-                              <button class="btn btn-primary">Tìm</button>
                           </div>
+                          <button type="button" class="btn btn-primary">Tìm</button>
                         </div>
                       </div>
                 </form>
@@ -60,18 +60,19 @@
                             <th>Nội dung</th>
                             <th>Thời gian bắt đầu</th>
                             <th>Thời gian kết thúc</th>
-                            <th></th>
+                            <th>Trạng thái</th>
+                            <th> Hành động</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach ($times as $time)
-                             @if (\Illuminate\Support\Carbon::now()->lt($time->deadline))
+                             @if (\Illuminate\Support\Carbon::now()->lt($time->deadline) AND (\Illuminate\Support\Carbon::now()->gte($time->start_time)) )
                             <tr class="table-success">
                                 <td colspan="1">
                                     <span class="fw-bold">{{$time->name}}</span>
                                 </td>
                                 <td colspan="1">
-                                    <span class="fw-bold">{{\Illuminate\Support\Carbon::parse($time->created_at)->format('H:i - d/m/Y')}}</span>
+                                    <span class="fw-bold">{{\Illuminate\Support\Carbon::parse($time->start_time)->format('H:i - d/m/Y')}}</span>
                                 </td>
                                 <td colspan="1">
                                     <span class="fw-bold">{{\Illuminate\Support\Carbon::parse($time->deadline)->format('H:i - d/m/Y')}}</span>
@@ -96,18 +97,49 @@
                                     </div>
                                 </td>
                             </tr>
-                             @else
-                             <tr class="table-active">
+                             @elseif((\Illuminate\Support\Carbon::now()->lt($time->start_time)))
+                             <tr>
                                 <td colspan="1">
                                     <span class="fw-bold">{{$time->name}}</span>
                                 </td>
                                 <td colspan="1">
-                                    <span class="fw-bold">{{\Illuminate\Support\Carbon::parse($time->created_at)->format('H:i - d/m/Y')}}</span>
+                                    <span class="fw-bold">{{\Illuminate\Support\Carbon::parse($time->start_time)->format('H:i - d/m/Y')}}</span>
                                 </td>
                                 <td colspan="1">
                                     <span class="fw-bold">{{\Illuminate\Support\Carbon::parse($time->deadline)->format('H:i - d/m/Y')}}</span>
                                 </td>
-                                <td><span class="badge rounded-pill badge-light-secondary me-1">Đã kết thúc</span></td>
+                                <td><span class="badge rounded-pill badge-light-secondary me-1">Chưa bắt đầu</span></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
+                                            <i data-feather="more-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#update-time-{{$time->id}}">
+                                                <i data-feather="edit-2" class="me-50"></i>
+                                                <span>Sửa</span>
+                                            </a>
+                                            <a class="dropdown-item" href="#" onclick="delete_time(`{{route('page.time.delete',['id' => $time->id])}}`)">
+                                                <i data-feather="trash" class="me-50"></i>
+                                                <span>Xoá</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                             @else
+                             <tr class="table-danger">
+                                <td colspan="1">
+                                    <span class="fw-bold">{{$time->name}}</span>
+                                </td>
+                                <td colspan="1">
+                                    <span class="fw-bold">{{\Illuminate\Support\Carbon::parse($time->start_time)->format('H:i - d/m/Y')}}</span>
+                                </td>
+                                <td colspan="1">
+                                    <span class="fw-bold">{{\Illuminate\Support\Carbon::parse($time->deadline)->format('H:i - d/m/Y')}}</span>
+                                </td>
+                                <td><span class="badge rounded-pill badge-light-danger me-1">Đã kết thúc</span></td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
@@ -161,13 +193,18 @@
                         </div>
 
                         <div class="mb-1">
+                          <label for="start_time" class="form-label">Thời gian bắt đầu</label>
+                          <input type="text" placeholder="Thời gian bắt đầu" class="form-control task-due-date" id="start_time"
+                            name="start_time" />
+                        </div>
+                        <div class="mb-1">
                           <label for="end_time" class="form-label">Thời gian kết thúc</label>
                           <input type="text" placeholder="Thời gian kết thúc" class="form-control task-due-date" id="end_time"
                             name="end_time" />
                         </div>
                       </div>
                       <div class="my-1">
-                        <button onclick="endtime_valid(event)" class="btn btn-primary add-todo-item me-1">
+                        <button onclick="endtime_valid(event,'time_content','start_time','end_time')" class="btn btn-primary add-todo-item me-1">
                           Mở
                         </button>
                         <button type="reset" class="btn btn-info add-todo-item me-1">
@@ -202,18 +239,24 @@
                         <div class="action-tags">
                           <div class="mb-1">
                             <label for="time_content" class="form-label">Nội dung</label>
-                            <input type="text" name="time_content" value="{{$time->name}}"
+                            <input type="text" name="time_content" id="time-content-edit{{$time->id}}" value="{{$time->name}}"
                               class="new-todo-item-title form-control" required placeholder="Nhập nội dung" />
                           </div>
 
                           <div class="mb-1">
-                            <label for="end_time" class="form-label">Thời gian kết thúc</label>
-                            <input type="text" placeholder="Thời gian kết thúc" value="{{\Illuminate\Support\Carbon::parse($time->deadline)->format('d/m/Y H:i')}}" class="form-control task-due-date"
+                            <label for="start-time-edit{{$time->id}}" class="form-label">Thời gian bắt đầu</label>
+                            <input type="text" placeholder="Thời gian kết thúc" value="{{\Illuminate\Support\Carbon::parse($time->start_time)->format('d/m/Y H:i')}}" class="form-control task-due-date" id="start-time-edit{{$time->id}}"
+                              name="start_time" />
+                          </div>
+
+                          <div class="mb-1">
+                            <label for="end-time-edit{{$time->id}}" class="form-label">Thời gian kết thúc</label>
+                            <input type="text" placeholder="Thời gian kết thúc" value="{{\Illuminate\Support\Carbon::parse($time->deadline)->format('d/m/Y H:i')}}" class="form-control task-due-date" id="end-time-edit{{$time->id}}"
                               name="end_time" />
                           </div>
                         </div>
                         <div class="my-1">
-                          <button onclick="endtime_valid(event)" class="btn btn-primary add-todo-item me-1">
+                          <button onclick="endtime_valid(event,`time-content-edit{{$time->id}}`,`start-time-edit{{$time->id}}`,`end-time-edit{{$time->id}}`)" class="btn btn-primary add-todo-item me-1">
                             Lưu
                           </button>
                           <button type="reset" class="btn btn-info add-todo-item me-1">
